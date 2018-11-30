@@ -12,3 +12,10 @@ U:\laboratoire\projet Quiz\ConsoleApp1\ConsoleApp1\obj\Debug\QuizAlphaV1.csprojR
 U:\laboratoire\projet Quiz\ConsoleApp1\ConsoleApp1\obj\Debug\QuizAlphaV1.csproj.CoreCompileInputs.cache
 U:\laboratoire\projet Quiz\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.exe
 U:\laboratoire\projet Quiz\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.pdb
+U:\laboratoire\projet Quiz\ConsoleApp1\Quiz-Alpha-Console\ConsoleApp1\bin\Debug\ConsoleApp1.exe.config
+U:\laboratoire\projet Quiz\ConsoleApp1\Quiz-Alpha-Console\ConsoleApp1\bin\Debug\ConsoleApp1.exe
+U:\laboratoire\projet Quiz\ConsoleApp1\Quiz-Alpha-Console\ConsoleApp1\bin\Debug\ConsoleApp1.pdb
+U:\laboratoire\projet Quiz\ConsoleApp1\Quiz-Alpha-Console\ConsoleApp1\obj\Debug\QuizAlphaV1.csprojResolveAssemblyReference.cache
+U:\laboratoire\projet Quiz\ConsoleApp1\Quiz-Alpha-Console\ConsoleApp1\obj\Debug\QuizAlphaV1.csproj.CoreCompileInputs.cache
+U:\laboratoire\projet Quiz\ConsoleApp1\Quiz-Alpha-Console\ConsoleApp1\obj\Debug\ConsoleApp1.exe
+U:\laboratoire\projet Quiz\ConsoleApp1\Quiz-Alpha-Console\ConsoleApp1\obj\Debug\ConsoleApp1.pdb

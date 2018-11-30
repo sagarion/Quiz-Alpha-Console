@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Class
+namespace QuizAlphaV1
 {
     class Quiz
     {
@@ -80,7 +80,7 @@ namespace Class
             }
 
             Console.WriteLine("\n Résultat du quiz : ");
-            Console.WriteLine(countCorrectAnswers + "/" + countQuestions + " corrects answers !");
+            Console.WriteLine(" " + countCorrectAnswers + "/" + countQuestions + " réponse(s) correcte(s) !");
         }
     }
 }
