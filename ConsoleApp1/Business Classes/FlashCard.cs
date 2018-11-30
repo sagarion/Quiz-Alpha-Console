@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QuizAlphaV1
 {
-    class FlashCard
+    public class FlashCard
     {
         // attributs
 
