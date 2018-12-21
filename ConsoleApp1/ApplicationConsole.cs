@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuizAlphaV1;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,7 @@ namespace ConsoleApp1
     {
         public static void QuizAlphaConsole()
         {
-            MenuPrincipale();
+            MenuPrincipaleApp();
         }
 
         /// <summary>
@@ -19,7 +20,7 @@ namespace ConsoleApp1
         /// pour le moment elle n'affiche que le menu et gère la saisie de l'utilsateur
         /// par la suite, elle enclenchera les autres parties applicative.
         /// </summary>
-        private static void MenuPrincipale()
+        private static void MenuPrincipaleApp()
         {
             Console.WriteLine("\n------------------------------");
 
@@ -48,22 +49,23 @@ namespace ConsoleApp1
                 switch (read)
                 {
                     case "C":
-                        Console.WriteLine("Vous allez à présent accéder à l'interface de création de Quiz");
+                        Console.WriteLine("Vous allez à présent accéder à l'interface de création de Quiz.");
+                        CreateQuizApp();
                         break;
                     case "M":
-                        Console.WriteLine("Vous allez à présent accéder à l'interface des Quiz");
+                        Console.WriteLine("Vous allez à présent accéder à l'interface des Quiz.");
                         break;
                     case "R":
-                        Console.WriteLine("Vous allez à présent accéder à l'interface de pratique des Quizs");
+                        Console.WriteLine("Vous allez à présent accéder à l'interface de pratique des Quizs.");
                         break;
                     case "S":
-                        Console.WriteLine("Merci d'avoir choisi cette fonction mais elle n'est pas encore implémenté");
+                        Console.WriteLine("Merci d'avoir choisi cette fonction mais elle n'est pas encore implémenté.");
                         break;
                     case "U":
-                        Console.WriteLine("Merci d'avoir choisi cette fonction mais elle n'est pas encore implémenté");
+                        Console.WriteLine("Merci d'avoir choisi cette fonction mais elle n'est pas encore implémenté.");
                         break;
                     case "Q":
-                        Console.WriteLine("Vous allez à présent quitter l'application");
+                        Console.WriteLine("Vous allez à présent quitter l'application.");
                         break;
                     case "":
                         Console.WriteLine("Erreur aucune saisie : vous devez tapper un des caractère proposés par l'application pour interagir.");
@@ -75,6 +77,28 @@ namespace ConsoleApp1
                         break;
                 }
             }
+        }
+        private static void CreateQuizApp()
+        {
+            string quizName;
+            bool resultInvalid = true;
+
+            do
+            {
+                Console.WriteLine("\n");
+                Console.WriteLine("Comment voulez-vous nommer le quiz ?");
+                quizName = Console.ReadLine();
+
+                if (quizName == "")
+                    Console.WriteLine("Erreur aucune saisie : Veuillez saisir un nom pour le test !");
+                else
+                    resultInvalid = false;
+
+            } while (resultInvalid);
+
+            Quiz newQuiz = new Quiz(quizName);
+
+            Console.WriteLine("le numero du Quiz qui a été créer est le {0} !", newQuiz.getId());
         }
     }
 }

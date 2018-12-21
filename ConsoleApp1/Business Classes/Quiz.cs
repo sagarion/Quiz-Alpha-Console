@@ -57,6 +57,11 @@ namespace QuizAlphaV1
             return this.cards;
         }
 
+        public int getId()
+        {
+            return id;
+        }
+
 
         // methodes
 
