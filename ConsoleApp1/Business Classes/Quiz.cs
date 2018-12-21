@@ -18,6 +18,8 @@ namespace QuizAlphaV1
         /// </summary>
         private List<FlashCard> cards;
 
+        private static Random generator = new Random();
+
         //Constructeur
         public Quiz(String title)
         {
@@ -52,13 +54,13 @@ namespace QuizAlphaV1
         public void AddCard(FlashCard card)
         {
             // vérifie que la carte est valide avant de l'ajouter
-            if (card.IsCardOK())
+            if (card.IsCardOK() && !this.IsCardAlreadyIn(card))
                 cards.Add(card);
             else
                 // ne fait rien pour le moment
-               ;
+                ;
         }
-        
+
         public void startQuizConsole()
         {
             int countCorrectAnswers = 0;
@@ -68,7 +70,7 @@ namespace QuizAlphaV1
             Console.WriteLine("Début du test : " + title);
             foreach (FlashCard card in cards)
             {
-                if(card.IsCardOK())
+                if (card.IsCardOK())
                 {
                     countQuestions += 1;
                     result = card.AskQuestionConsole();
@@ -76,11 +78,59 @@ namespace QuizAlphaV1
                     if (result == true)
                         countCorrectAnswers += 1;
                 }
-                
+
             }
 
             Console.WriteLine("\n Résultat du quiz : ");
             Console.WriteLine(" " + countCorrectAnswers + "/" + countQuestions + " réponse(s) correcte(s) !");
+        }
+
+        public Boolean IsCardAlreadyIn(FlashCard Card)
+        {
+            Boolean result = false;
+
+            int compteur = 0;
+
+            while (!result && compteur < this.GetCards().Count())
+            {
+                if (this.GetCards().ElementAt(compteur).IsIdentical(Card))
+                    return true;
+
+                compteur += 1;
+            }
+
+            return result;
+        }
+
+        public void Shuffle()
+        {
+            if (this.GetCards().Count() > 1)
+            {
+                int permutations = generator.Next(this.GetCards().Count(), this.GetCards().Count() * 10);
+
+                int index1;
+                int index2;
+
+                FlashCard temp;
+
+                for (int i = 0; i < permutations; i++)
+                {
+                    index1 = generator.Next(0, this.GetCards().Count());
+                    index2 = generator.Next(0, this.GetCards().Count());
+
+                    temp = this.GetCards().ElementAt(index1);
+                    this.GetCards()[index1] = this.GetCards().ElementAt(index2);
+                    this.GetCards()[index2] = temp;
+
+                    Console.WriteLine("\n\n--- new list ---");
+
+                    foreach (FlashCard card in this.GetCards())
+                    {
+                        Console.WriteLine(card.RectoQuery + " : " + card.VersoAnswer);
+
+                    }
+                }
+            }
         }
     }
 }

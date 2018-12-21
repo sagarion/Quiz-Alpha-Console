@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationConsole.cs" />
     <Compile Include="Business Classes\FlashCard.cs" />
     <Compile Include="Business Classes\Quiz.cs" />
     <Compile Include="Program.cs" />

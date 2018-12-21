@@ -16,48 +16,60 @@ namespace QuizAlphaV1
         private String rectoQuery;
 
         /// <summary>
-        /// la réponse qui est inscrit sur le verso de la carte
+        /// La réponse qui est inscrit sur le verso de la carte
         /// </summary>
         private String versoAnswer;
+
+        /// <summary>
+        /// L'attribut qui permet de déterminer l'état actuelle de la flashCard
+        /// </summary>
+        private bool cardOk = true;
 
         // Constructor
         public FlashCard(String rectoQuery, String versoAnswer)
         {
-            this.SetRectoQuery(rectoQuery);
-            this.SetVersoAnswer(versoAnswer);
+            this.RectoQuery = rectoQuery;
+            this.VersoAnswer = versoAnswer;
         }
 
 
         // Getter and Setter
-
-        public void SetRectoQuery(String rectoQuery)
+        public string RectoQuery
         {
-            if(this.IsStringValid(rectoQuery))
-                this.rectoQuery = rectoQuery;
-            else
+            get
             {
-                this.rectoQuery = "erreur";
+                return this.rectoQuery;
+            }
+
+            set
+            {
+                if (this.IsStringValid(value))
+                    this.rectoQuery = value;
+                else
+                {
+                    this.rectoQuery = "";
+                }
+                this.CheckCard();
             }
         }
 
-        public String GetRectoQuery()
+        public string VersoAnswer
         {
-            return this.rectoQuery;
-        }
-
-        public void SetVersoAnswer(String versoAnswer)
-        {
-            if(this.IsStringValid(versoAnswer))
-                this.versoAnswer = versoAnswer;
-            else
+            get
             {
-                this.versoAnswer = "erreur";
+                return this.versoAnswer;
             }
-        }
 
-        public String GetVersoAnswer()
-        {
-            return this.versoAnswer;
+            set
+            {
+                if (this.IsStringValid(value))
+                    this.versoAnswer = value;
+                else
+                {
+                    this.versoAnswer = "";
+                }
+                this.CheckCard();
+            }
         }
 
         // methodes
@@ -84,15 +96,23 @@ namespace QuizAlphaV1
         }
 
         /// <summary>
+        /// Cette fonction a pour but mettre à jour l'état de la FlashCard
+        /// </summary>
+        public void CheckCard()
+        {
+            if (this.IsStringValid(this.RectoQuery) && this.IsStringValid(this.VersoAnswer))
+                cardOk = true;
+            else
+                cardOk = false;
+        }
+
+        /// <summary>
         /// Vérifie si la carte est dans un état valide et peut être utilisé dans un questionnaire
         /// </summary>
         /// <returns>si la carte est valide : true, si la carte est invalide : false</returns>
         public Boolean IsCardOK()
         {
-            if (this.rectoQuery == "erreur" || this.versoAnswer == "erreur")
-                return false;
-            else
-                return true;
+            return this.cardOk;
         }
 
         /// <summary>
@@ -105,11 +125,11 @@ namespace QuizAlphaV1
             Boolean result = false;
             String answerGiven = "";
 
-            Console.WriteLine(this.GetRectoQuery());
+            Console.WriteLine(this.RectoQuery);
             Console.Write("votre Réponse : ");
             answerGiven = Console.ReadLine();
 
-            if (answerGiven == this.GetVersoAnswer())
+            if (answerGiven == this.VersoAnswer)
             {
                 result = true;
                 Console.WriteLine("Cette réponse est correct \n");
@@ -117,8 +137,24 @@ namespace QuizAlphaV1
             }
             else
             {
-                Console.WriteLine("Cette réponse est incorrect, la bonne réponse est : " + this.GetVersoAnswer() + "\n");
+                Console.WriteLine("Cette réponse est incorrect, la bonne réponse est : " + this.VersoAnswer + "\n");
             }
+
+            return result;
+        }
+
+        /// <summary>
+        /// fonction déterminant si une carte mise en paramètre est identique (même donnée)
+        /// à la carte courrante
+        /// </summary>
+        /// <param name="card"> FlashCard devant être comparé</param>
+        /// <returns> Renvoie true si elles sont identique sion false</returns>
+        public Boolean IsIdentical(FlashCard card)
+        {
+            Boolean result = false; ;
+
+            if (card.RectoQuery == this.RectoQuery && card.VersoAnswer == this.VersoAnswer)
+                result = true;
 
             return result;
         }
