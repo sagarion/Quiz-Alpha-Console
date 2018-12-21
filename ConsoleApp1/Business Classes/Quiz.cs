@@ -9,6 +9,16 @@ namespace QuizAlphaV1
     public class Quiz
     {
         /// <summary>
+        /// compteur pour la généation d'identifiant
+        /// </summary>
+        private static int idCounter = 1;
+
+        /// <summary>
+        /// identificateur unique à chaque objet de la classe ( dans les limites de int
+        /// </summary>
+        private int id;
+
+        /// <summary>
         /// Titre du questionnaire
         /// </summary>
         private String title;
@@ -25,6 +35,9 @@ namespace QuizAlphaV1
         {
             this.SetTitle(title);
             this.cards = new List<FlashCard>();
+
+            this.id = idCounter;
+            idCounter += 1;
         }
 
         // Getter Setter
