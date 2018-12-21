@@ -78,6 +78,7 @@ namespace ConsoleApp1
                 }
             }
         }
+
         private static void CreateQuizApp()
         {
             string quizName;
@@ -85,7 +86,7 @@ namespace ConsoleApp1
 
             do
             {
-                Console.WriteLine("\n");
+                Console.WriteLine("\n------------------------------");
                 Console.WriteLine("Comment voulez-vous nommer le quiz ?");
                 quizName = Console.ReadLine();
 
@@ -98,7 +99,13 @@ namespace ConsoleApp1
 
             Quiz newQuiz = new Quiz(quizName);
 
-            Console.WriteLine("le numero du Quiz qui a été créer est le {0} !", newQuiz.getId());
+            Console.WriteLine("le numero du Quiz qui a été créer est le {0} !", newQuiz.GetId());
+            UpdateQuizApp(newQuiz);
+        }
+        private static void UpdateQuizApp(Quiz quiz)
+        {
+            Console.WriteLine("\n------------------------------");
+            Console.WriteLine("Gestion du Quiz numero : " + quiz.GetId());
         }
     }
 }
