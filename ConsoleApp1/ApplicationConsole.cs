@@ -53,32 +53,42 @@ namespace ConsoleApp1
                         CreateQuizApp();
                         break;
                     case "M":
-                        Console.WriteLine("Vous allez à présent accéder à l'interface des Quiz.");
+                        Console.WriteLine("Vous allez à présent accéder à l'interface des Quiz.(non implementer");
+                        MenuPrincipaleApp();
                         break;
                     case "R":
                         Console.WriteLine("Vous allez à présent accéder à l'interface de pratique des Quizs.");
+                        MenuPrincipaleApp();
                         break;
                     case "S":
                         Console.WriteLine("Merci d'avoir choisi cette fonction mais elle n'est pas encore implémenté.");
+                        MenuPrincipaleApp();
                         break;
                     case "U":
                         Console.WriteLine("Merci d'avoir choisi cette fonction mais elle n'est pas encore implémenté.");
+                        MenuPrincipaleApp();
                         break;
                     case "Q":
                         Console.WriteLine("Vous allez à présent quitter l'application.");
+                        MenuPrincipaleApp();
                         break;
                     case "":
                         Console.WriteLine("Erreur aucune saisie : vous devez tapper un des caractère proposés par l'application pour interagir.");
                         invalidResult = true;
+                        MenuPrincipaleApp();
                         break;
                     default:
                         Console.WriteLine("Erreur saisie non reconnu : vous devez tapper un des caractères proposés par l'application pour interagir.");
                         invalidResult = true;
+                        MenuPrincipaleApp();
                         break;
                 }
             }
         }
 
+        /// <summary>
+        /// Partie gérant la création d'un nouveau Quiz.
+        /// </summary>
         private static void CreateQuizApp()
         {
             string quizName;
@@ -102,10 +112,68 @@ namespace ConsoleApp1
             Console.WriteLine("le numero du Quiz qui a été créer est le {0} !", newQuiz.GetId());
             UpdateQuizApp(newQuiz);
         }
+
+        /// <summary>
+        /// Partie gérant la manipulation dun quiz Existant.
+        /// Suite à la cération d'un nouveau Quiz on arrive ici.
+        /// </summary>
+        /// <param name="quiz"></param>
         private static void UpdateQuizApp(Quiz quiz)
         {
             Console.WriteLine("\n------------------------------");
             Console.WriteLine("Gestion du Quiz numero : " + quiz.GetId());
+            Console.WriteLine("Ce quiz comporte {1} carte de question. \n", quiz.GetCards().Count());
+            Console.WriteLine("--> A : Afficher toutes les informations du Quiz ");
+            Console.WriteLine("--> R : Renommer le quiz. ");
+            Console.WriteLine("--> G : Gestion des cartes du quiz ");
+            Console.WriteLine("--> Q : Quitter la gestion du quiz ");
+            Console.WriteLine("");
+            Console.WriteLine("\n------------------------------");
+
+            bool invalidResult = true;
+            string read = "";
+
+            while (invalidResult)
+            {
+                Console.WriteLine("\n Que souhaitez vous faire ? : ");
+                read = Console.ReadLine();
+
+                invalidResult = false;
+
+                switch (read)
+                {
+                    // Afficher les informations du quiz
+                    case "A":
+                        // not implemented
+                        UpdateQuizApp(quiz);
+                        break;
+                    // Renommer le quiz
+                    case "R":
+                        // not implemented
+                        UpdateQuizApp(quiz);
+                        break;
+                    // Gérer les cartes du quiz
+                    case "G":
+                        // not implemented
+                        UpdateQuizApp(quiz);
+                        break;
+                    // quitter la gestion de quiz
+                    case "Q":
+                        Console.WriteLine("Retour au menu Principale");
+                        MenuPrincipaleApp();
+                        break;
+                    case "":
+                        Console.WriteLine("Erreur aucune saisie : vous devez tapper un des caractère proposés par l'application pour interagir.");
+                        invalidResult = true;
+                        MenuPrincipaleApp();
+                        break;
+                    default:
+                        Console.WriteLine("Erreur saisie non reconnu : vous devez tapper un des caractères proposés par l'application pour interagir.");
+                        invalidResult = true;
+                        MenuPrincipaleApp();
+                        break;
+                }
+            }
         }
     }
 }
