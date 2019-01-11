@@ -158,5 +158,11 @@ namespace QuizAlphaV1
 
             return result;
         }
+
+        public override string ToString()
+        {
+            String toString = String.Format("Question : {0} = Réponse : {1}",this.RectoQuery, this.VersoAnswer);
+            return toString;
+        }
     }
 }

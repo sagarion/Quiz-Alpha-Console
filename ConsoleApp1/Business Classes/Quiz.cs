@@ -33,7 +33,7 @@ namespace QuizAlphaV1
         //Constructeur
         public Quiz(String title)
         {
-            this.SetTitle(title);
+            this.title = title;
             this.cards = new List<FlashCard>();
 
             this.id = idCounter;
@@ -147,6 +147,26 @@ namespace QuizAlphaV1
                         Console.WriteLine(card.RectoQuery + " : " + card.VersoAnswer);
 
                     }
+                }
+            }
+        }
+
+        public void ConsoleShowAll()
+        {
+            Console.WriteLine("\n------------------------------");
+            Console.WriteLine("Gestion des Flashcartes du quiz {0} ({1})", this.title, this.id);
+            if(this.cards.Count == 0)
+                Console.WriteLine("Ce quiz ne comporte pas encore de carte");
+            else if(this.cards.Count == 1)
+            {
+                Console.WriteLine("Ce quiz comporte 1 carte");
+                Console.WriteLine(this.cards[1].ToString());
+            }else
+            {
+                Console.WriteLine("Ce quiz comporte {0} cartes",this.cards.Count);
+                foreach(FlashCard card in this.cards)
+                {
+                    Console.WriteLine(card.ToString());
                 }
             }
         }

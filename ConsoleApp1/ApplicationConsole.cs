@@ -118,11 +118,11 @@ namespace ConsoleApp1
         /// Suite à la cération d'un nouveau Quiz on arrive ici.
         /// </summary>
         /// <param name="quiz"></param>
-        private static void UpdateQuizApp(Quiz quiz)
+        public static void UpdateQuizApp(Quiz quiz)
         {
             Console.WriteLine("\n------------------------------");
-            Console.WriteLine("Gestion du Quiz numero : " + quiz.GetId());
-            Console.WriteLine("Ce quiz comporte {1} carte de question. \n", quiz.GetCards().Count());
+            Console.WriteLine("Gestion du Quiz \"{0}\" numero : {1}",quiz.GetTitle(),quiz.GetId());
+            Console.WriteLine("Ce quiz comporte {0} carte de question. \n", quiz.GetCards().Count());
             Console.WriteLine("--> A : Afficher toutes les informations du Quiz ");
             Console.WriteLine("--> R : Renommer le quiz. ");
             Console.WriteLine("--> G : Gestion des cartes du quiz ");
@@ -135,7 +135,7 @@ namespace ConsoleApp1
 
             while (invalidResult)
             {
-                Console.WriteLine("\n Que souhaitez vous faire ? : ");
+                Console.Write("\n Que souhaitez vous faire ? : ");
                 read = Console.ReadLine();
 
                 invalidResult = false;
@@ -144,7 +144,9 @@ namespace ConsoleApp1
                 {
                     // Afficher les informations du quiz
                     case "A":
-                        // not implemented
+                        // implemented but not fully tested
+                        Console.WriteLine(quiz.ToString());
+
                         UpdateQuizApp(quiz);
                         break;
                     // Renommer le quiz
