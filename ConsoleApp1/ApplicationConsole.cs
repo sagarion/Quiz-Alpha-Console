@@ -70,7 +70,6 @@ namespace ConsoleApp1
                         break;
                     case "Q":
                         Console.WriteLine("Vous allez à présent quitter l'application.");
-                        MenuPrincipaleApp();
                         break;
                     case "":
                         Console.WriteLine("Erreur aucune saisie : vous devez tapper un des caractère proposés par l'application pour interagir.");
@@ -86,10 +85,7 @@ namespace ConsoleApp1
             }
         }
 
-        /// <summary>
-        /// Partie gérant la création d'un nouveau Quiz.
-        /// </summary>
-        private static void CreateQuizApp()
+        private static string AskUserQuizTitle()
         {
             string quizName;
             bool resultInvalid = true;
@@ -101,11 +97,21 @@ namespace ConsoleApp1
                 quizName = Console.ReadLine();
 
                 if (quizName == "")
-                    Console.WriteLine("Erreur aucune saisie : Veuillez saisir un nom pour le test !");
+                    Console.WriteLine("Erreur aucune saisie : Veuillez saisir un nom pour le quiz !");
                 else
                     resultInvalid = false;
 
             } while (resultInvalid);
+
+            return quizName;
+        }
+
+        /// <summary>
+        /// Partie gérant la création d'un nouveau Quiz.
+        /// </summary>
+        private static void CreateQuizApp()
+        {
+            string quizName = AskUserQuizTitle();
 
             Quiz newQuiz = new Quiz(quizName);
 
@@ -151,7 +157,7 @@ namespace ConsoleApp1
                         break;
                     // Renommer le quiz
                     case "R":
-                        // not implemented
+                        RenameQuiz(quiz);
                         UpdateQuizApp(quiz);
                         break;
                     // Gérer les cartes du quiz
@@ -177,5 +183,13 @@ namespace ConsoleApp1
                 }
             }
         }
+
+        public static void RenameQuiz(Quiz quiz)
+        {
+            Console.WriteLine("Le quiz {0} a pour titre actuelle \"{1}\"", quiz.GetId(), quiz.GetTitle());
+            quiz.SetTitle(AskUserQuizTitle());
+        }
+
+
     }
 }

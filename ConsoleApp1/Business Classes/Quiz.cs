@@ -76,7 +76,7 @@ namespace QuizAlphaV1
                 cards.Add(card);
             else
                 // ne fait rien pour le moment
-                ;
+                Console.WriteLine();
         }
 
         public void startQuizConsole()
@@ -151,6 +151,10 @@ namespace QuizAlphaV1
             }
         }
 
+        /// <summary>
+        /// Cette méthode affiche dans la Console toutes les informations relative au Quiz
+        /// et informe sur l'état du decks de cards et le cas échéant le contenu de ce deck
+        /// </summary>
         public void ConsoleShowAll()
         {
             Console.WriteLine("\n------------------------------");
